@@ -1,0 +1,9 @@
+version: "2.4"
+
+services:
+  php:
+    image: jelovac/swe-workout-php
+    build:
+      context: .
+    volumes:
+      - ".:/var/www/app"

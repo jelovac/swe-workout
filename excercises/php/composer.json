@@ -1,0 +1,32 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Jelovac\\SweWorkout\\": "src/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "@tools:install"
+    ],
+    "post-update-cmd": [
+      "@tools:update"
+    ],
+    "tools:install": [
+      "@php composer --working-dir=tools/phpstan install",
+      "@php composer --working-dir=tools/php-cs-fixer install",
+      "@php composer --working-dir=tools/phpunit install"
+    ],
+    "tools:update": [
+      "@php composer --working-dir=tools/phpstan update",
+      "@php composer --working-dir=tools/php-cs-fixer update",
+      "@php composer --working-dir=tools/phpunit update"
+    ],
+    "code:quality:check": [
+      "@code:cs:check",
+      "@code:static:check"
+    ],
+    "code:cs:check": "@php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff --dry-run src",
+    "code:cs:fix": "@php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff src",
+    "code:static:check": "@php tools/phpstan/vendor/bin/phpstan analyse src"
+  }
+}

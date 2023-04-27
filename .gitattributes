@@ -1,0 +1,23 @@
+# Auto detect
+##   Handle line endings automatically for files detected as
+##   text and leave all files detected as binary untouched.
+##   This will handle all files NOT defined below.
+*                 text=auto
+
+# Source code
+*.php             text diff=php
+
+# Docker
+Dockerfile        text
+
+# Documentation
+*.md              text diff=markdown
+*.txt             text
+LICENSE           text
+
+# Configs
+*.yaml            text
+*.yml             text
+
+# Ignore files
+*.*ignore         text
