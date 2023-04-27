@@ -2,7 +2,7 @@
 
 Mind workout is just as important as physical workout. So lets train.
 
-Keeping track of my endeavors in solving leetcode problems.
+Keeping track of my endeavors in solving software engineering exercises.
 
 ## License
 
