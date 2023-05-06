@@ -87,16 +87,9 @@ final class TwoSum
                 null !== $firstNumKey
                 && $firstNumKey !== $secondNumKey
             ) {
-                if ($firstNumKey > $secondNumKey) {
-                    return [
-                        $secondNumKey,
-                        $firstNumKey,
-                    ];
-                }
-
                 return [
-                    $firstNumKey,
                     $secondNumKey,
+                    $firstNumKey,
                 ];
             }
         }

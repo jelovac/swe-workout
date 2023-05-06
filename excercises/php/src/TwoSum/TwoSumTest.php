@@ -58,6 +58,21 @@ final class TwoSumTest extends TestCase
                 'expectedResult' => [0, 1],
             ],
             [
+                'nums' => [1, -10, 11, 15],
+                'target' => -9,
+                'expectedResult' => [0, 1],
+            ],
+            [
+                'nums' => [15, 1, -10, 11],
+                'target' => -9,
+                'expectedResult' => [1, 2],
+            ],
+            [
+                'nums' => [15, 11, 1, -10],
+                'target' => -9,
+                'expectedResult' => [2, 3],
+            ],
+            [
                 'nums' => [50, -1, 20],
                 'target' => 19,
                 'expectedResult' => [1, 2],
