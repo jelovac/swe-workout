@@ -36,6 +36,9 @@ final class TwoSum
     }
 
     /**
+     * Simple less optimized solution.
+     * Time complexity: O(n^2).
+     *
      * @param array<int,int> $nums
      *
      * @return array<int,int>
@@ -59,6 +62,9 @@ final class TwoSum
     }
 
     /**
+     * Advanced more optimized solution.
+     * Time complexity: O(n).
+     *
      * @param array<int,int> $nums
      *
      * @return array<int,int>

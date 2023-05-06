@@ -6,6 +6,6 @@ namespace Jelovac\SweWorkout\TwoSum;
 
 enum TwoSumAlgorithmComplexity: string
 {
-    case simple = 'O(n^2)';
-    case advanced = 'O(n)';
+    case simple = 'simple';
+    case advanced = 'advanced';
 }
