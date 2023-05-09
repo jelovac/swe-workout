@@ -24,20 +24,19 @@ final class AddTwoNumbers
 
         $intArrayResult = [];
 
-        $moveIt = false;
+        $carry = false;
 
         do {
-            $lm = $moveIt ? 1 : 0;
-            $l1 = $currentNodeForListOne->val ?? 0;
-            $l2 = $currentNodeForListTwo->val ?? 0;
-
-            $sum = $lm + $l1 + $l2;
+            $sum =
+                ($currentNodeForListOne->val ?? 0)
+                + ($currentNodeForListTwo->val ?? 0)
+                + ($carry ? 1 : 0);
 
             if ($sum > 9) {
                 $sum = (int) str_split("$sum")[1];
-                $moveIt = true;
+                $carry = true;
             } else {
-                $moveIt = false;
+                $carry = false;
             }
 
             $intArrayResult[] = $sum;
@@ -49,7 +48,7 @@ final class AddTwoNumbers
             || null !== $currentNodeForListTwo
         );
 
-        if ($moveIt) {
+        if ($carry) {
             $intArrayResult[] = 1;
         }
 
