@@ -27,6 +27,7 @@
     ],
     "code:cs:check": "@php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff --dry-run src",
     "code:cs:fix": "@php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff src",
-    "code:static:check": "@php tools/phpstan/vendor/bin/phpstan analyse src"
+    "code:static:check": "@php tools/phpstan/vendor/bin/phpstan analyse src",
+    "code:test": "@php tools/phpunit/vendor/bin/phpunit"
   }
 }
