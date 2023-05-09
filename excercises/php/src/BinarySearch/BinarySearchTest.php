@@ -25,7 +25,7 @@ final class BinarySearchTest extends TestCase
     /**
      * @return array<mixed>
      */
-    public function provideTestData(): array
+    public static function provideTestData(): array
     {
         return [
           [
