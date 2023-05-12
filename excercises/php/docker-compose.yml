@@ -5,5 +5,6 @@ services:
     image: jelovac/swe-workout-php
     build:
       context: .
+      target: package
     volumes:
       - ".:/var/www/app"

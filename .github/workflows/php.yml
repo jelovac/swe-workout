@@ -1,0 +1,57 @@
+name: PHP Workflow
+
+on:
+  push:
+  pull_request:
+
+jobs:
+
+  # see https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-a-registry-using-a-personal-access-token
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate unique build ID
+        run: echo "BUILD_ID=W${GITHUB_RUN_ID}I${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
+
+      - name: Assign environment variables
+        run: |
+          echo "DOCKER_BUILD_REPOSITORY=jelovac/swe-workout-php" >> $GITHUB_ENV
+          echo "DOCKER_BUILD_TAG=${DOCKER_BUILD_REPOSITORY}:build_${BUILD_ID}" >> $GITHUB_ENV
+          echo "DOCKER_RELEASE_TAG=${DOCKER_BUILD_REPOSITORY}:latest" >> $GITHUB_ENV
+
+      - name: Build Docker Image
+        run: |
+          docker build excercises/php \
+            --target package \
+            --file Dockerfile \
+            --tag $DOCKER_BUILD_TAG \
+            --label "build_id=${BUILD_ID}"
+
+      - name: Log in to registry
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push built Docker Image
+        run: |
+          docker push $DOCKER_BUILD_TAG
+          echo "::set-output name=DOCKER_BUILD_TAG::${DOCKER_BUILD_TAG}"
+
+      - name: Release built Docker Image
+        if: >
+          github.ref == 'refs/heads/main' &&
+          (
+            github.event_name == 'push' ||
+            (
+              github.event_name == 'pull_request' &&
+              github.event.pull_request.merged == true
+            )
+          )
+        run: |
+          docker tag $DOCKER_BUILD_TAG $DOCKER_RELEASE_TAG
+          docker push $DOCKER_RELEASE_TAG
