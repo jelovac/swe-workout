@@ -26,11 +26,11 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build excercises/php \
+          docker build \
             --target package \
-            --file Dockerfile \
             --tag $DOCKER_BUILD_TAG \
-            --label "build_id=${BUILD_ID}"
+            --label "build_id=${BUILD_ID}" \
+            excercises/php
 
       - name: Log in to registry
         uses: docker/login-action@v2
