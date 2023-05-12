@@ -41,7 +41,6 @@ jobs:
       - name: Push built Docker Image
         run: |
           docker push $DOCKER_BUILD_TAG
-          echo "::set-output name=DOCKER_BUILD_TAG::${DOCKER_BUILD_TAG}"
 
       - name: Release built Docker Image
         if: >
