@@ -39,8 +39,6 @@ RUN \
   useradd -u $UID -m -d /var/www devuser \
   && chown -R devuser:devuser /var/www
 
-WORKDIR /var/www/app
-
 USER devuser
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -50,6 +48,8 @@ FROM build as package
 ARG UID
 
 COPY --chown=$UID . /var/www/app
+
+WORKDIR /var/www/app
 
 # Install project dependencies
 RUN composer install --no-interaction
