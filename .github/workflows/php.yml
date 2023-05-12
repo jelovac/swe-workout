@@ -19,7 +19,8 @@ jobs:
 
       - name: Assign environment variables
         run: |
-          echo "DOCKER_BUILD_REPOSITORY=jelovac/swe-workout-php" >> $GITHUB_ENV
+          DOCKER_BUILD_REPOSITORY=jelovac/swe-workout-php
+          echo "DOCKER_BUILD_REPOSITORY=${DOCKER_BUILD_REPOSITORY}" >> $GITHUB_ENV
           echo "DOCKER_BUILD_TAG=${DOCKER_BUILD_REPOSITORY}:build_${BUILD_ID}" >> $GITHUB_ENV
           echo "DOCKER_RELEASE_TAG=${DOCKER_BUILD_REPOSITORY}:latest" >> $GITHUB_ENV
 
