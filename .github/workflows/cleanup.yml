@@ -1,0 +1,17 @@
+name: Run scheduled cleanup tasks
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run every day at midnight
+
+jobs:
+
+  docker_php_repository_cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Perform build tags cleanup
+        run: |
+          DOCKER_HUB_ACCESS_TOKEN=$(
+            bash .github/scripts/dockerhub/login.sh ${{ secrets.DOCKERHUB_USERNAME }} ${{ secrets.DOCKERHUB_TOKEN }}
+          )
+          bash .github/scripts/dockerhub/cleanup_build_tags.sh jelovac swe-workout-php $DOCKER_HUB_ACCESS_TOKEN
