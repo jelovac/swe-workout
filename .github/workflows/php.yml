@@ -64,7 +64,7 @@ jobs:
 
       - name: Perform PHPUnit tests
         run: |
-          touch phpunit.report.xml && chown 1000:1000 phpunit.report.xml
+          touch phpunit.report.xml && chmod 777 phpunit.report.xml
           docker run -v "$(pwd)/phpunit.report.xml:/var/www/app/phpunit.report.xml" "${DOCKER_BUILD_TAG}" bash -c "composer run code:test -- --log-junit phpunit.report.xml"
           echo "::set-output name=file-path::$(pwd)/phpunit.report.xml"
 
