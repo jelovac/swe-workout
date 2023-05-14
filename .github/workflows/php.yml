@@ -57,12 +57,11 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
-    container:
-      image: "${{ env.DOCKER_BUILD_TAG }}"
     steps:
       - name: Perform PHPUnit tests
         run: |
-          composer run code:test -- --log-junit phpunit.report.xml
+          touch phpunit.report.xml
+          docker run -v "$(pwd)/phpunit.report.xml:/var/www/app/phpunit.report.xml" ${{ env.DOCKER_BUILD_TAG }} composer run code:test -- --log-junit phpunit.report.xml
           echo "::set-output name=file-path::$(pwd)/phpunit.report.xml"
 
       - uses: actions/upload-artifact@v3
