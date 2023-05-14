@@ -14,13 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set environment variables
-        id: set-env
+      - name: Assign environment variables
         run: |
-          echo "DOCKER_BUILD_REPOSITORY=jelovac/swe-workout-php" >> $GITHUB_ENV
-          echo "BUILD_ID=W${{ github.run_id }}I${{ github.run_number }}" >> $GITHUB_ENV
-          echo "DOCKER_BUILD_TAG=${{ env.DOCKER_BUILD_REPOSITORY }}:build_${{ env.BUILD_ID }}" >> $GITHUB_ENV
-          echo "DOCKER_RELEASE_TAG=${{ env.DOCKER_BUILD_REPOSITORY }}:latest" >> $GITHUB_ENV
+          DOCKER_BUILD_REPOSITORY=jelovac/swe-workout-php
+          echo "DOCKER_BUILD_REPOSITORY=${DOCKER_BUILD_REPOSITORY}" >> $GITHUB_ENV
+          echo "DOCKER_BUILD_TAG=${DOCKER_BUILD_REPOSITORY}:build_${BUILD_ID}" >> $GITHUB_ENV
+          echo "DOCKER_RELEASE_TAG=${DOCKER_BUILD_REPOSITORY}:latest" >> $GITHUB_ENV
 
       - name: Build Docker Image
         run: |
