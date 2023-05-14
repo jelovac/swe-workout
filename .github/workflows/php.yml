@@ -11,10 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    outputs:
+      DOCKER_BUILD_TAG: ${{ steps.assign_env_vars.outputs.DOCKER_BUILD_TAG }}
     steps:
       - uses: actions/checkout@v3
 
       - name: Assign environment variables
+        id: assign_env_vars
         run: |
           DOCKER_BUILD_REPOSITORY=jelovac/swe-workout-php
           echo "DOCKER_BUILD_REPOSITORY=${DOCKER_BUILD_REPOSITORY}" >> $GITHUB_ENV
@@ -60,7 +63,7 @@ jobs:
       - name: Perform PHPUnit tests
         run: |
           touch phpunit.report.xml
-          docker run -v "$(pwd)/phpunit.report.xml:/var/www/app/phpunit.report.xml" ${{ env.DOCKER_BUILD_TAG }} bash -c "composer run code:test -- --log-junit phpunit.report.xml"
+          docker run -v "$(pwd)/phpunit.report.xml:/var/www/app/phpunit.report.xml" "${{ needs.build.outputs.DOCKER_BUILD_TAG }}" bash -c "composer run code:test -- --log-junit phpunit.report.xml"
           echo "::set-output name=file-path::$(pwd)/phpunit.report.xml"
 
       - uses: actions/upload-artifact@v3
