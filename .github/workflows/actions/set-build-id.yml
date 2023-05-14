@@ -1,0 +1,8 @@
+name: 'Action: Set BUILD_ID env'
+description: 'Sets the BUILD_ID environment variable which can be further utilized within the JOB scope'
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        echo "BUILD_ID=W${GITHUB_RUN_ID}I${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
+      shell: bash

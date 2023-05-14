@@ -1,0 +1,15 @@
+name: 'Action: Set  Docker Build Vars'
+description: 'Defines Docker Build variables which are used for build and deployment within the JOB scope.'
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        DOCKER_BUILD_REPOSITORY=jelovac/swe-workout-php
+        echo "DOCKER_BUILD_REPOSITORY=${DOCKER_BUILD_REPOSITORY}" >> $GITHUB_ENV
+
+        DOCKER_BUILD_TAG=${DOCKER_BUILD_REPOSITORY}:build_${BUILD_ID}
+        echo "DOCKER_BUILD_TAG=${DOCKER_BUILD_TAG}" >> $GITHUB_ENV
+
+        DOCKER_RELEASE_TAG=${DOCKER_BUILD_REPOSITORY}:latest
+        echo "DOCKER_RELEASE_TAG=${DOCKER_RELEASE_TAG}" >> $GITHUB_ENV
+      shell: bash

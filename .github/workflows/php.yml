@@ -5,8 +5,6 @@ on:
   pull_request:
 
 jobs:
-
-  # see https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-a-registry-using-a-personal-access-token
   build:
     runs-on: ubuntu-latest
     permissions:
@@ -18,20 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Assign environment variables
-        id: assign_env_vars
-        run: |
-          DOCKER_BUILD_REPOSITORY=jelovac/swe-workout-php
-          echo "DOCKER_BUILD_REPOSITORY=${DOCKER_BUILD_REPOSITORY}" >> $GITHUB_ENV
-          echo "::set-output name=DOCKER_BUILD_REPOSITORY::$DOCKER_BUILD_REPOSITORY"
+      - uses: ./.github/workflows/actions/set-build-id.yml
 
-          DOCKER_BUILD_TAG=${DOCKER_BUILD_REPOSITORY}:build_${BUILD_ID}
-          echo "DOCKER_BUILD_TAG=${DOCKER_BUILD_TAG}" >> $GITHUB_ENV
-          echo "::set-output name=DOCKER_BUILD_TAG::$DOCKER_BUILD_TAG"
-
-          DOCKER_RELEASE_TAG=${DOCKER_BUILD_REPOSITORY}:latest
-          echo "DOCKER_RELEASE_TAG=${DOCKER_RELEASE_TAG}" >> $GITHUB_ENV
-          echo "::set-output name=DOCKER_RELEASE_TAG::$DOCKER_RELEASE_TAG"
+      - uses: ./.github/workflows/actions/set-docker-build-vars.yml
 
       - name: Build Docker Image
         run: |
@@ -69,10 +56,16 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./.github/workflows/actions/set-build-id.yml
+
+      - uses: ./.github/workflows/actions/set-docker-build-vars.yml
+
       - name: Perform PHPUnit tests
         run: |
           touch phpunit.report.xml
-          docker run -v "$(pwd)/phpunit.report.xml:/var/www/app/phpunit.report.xml" "${{ needs.build.outputs.DOCKER_BUILD_TAG }}" bash -c "composer run code:test -- --log-junit phpunit.report.xml"
+          docker run -v "$(pwd)/phpunit.report.xml:/var/www/app/phpunit.report.xml" "${DOCKER_BUILD_TAG}" bash -c "composer run code:test -- --log-junit phpunit.report.xml"
           echo "::set-output name=file-path::$(pwd)/phpunit.report.xml"
 
       - uses: actions/upload-artifact@v3
