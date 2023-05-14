@@ -33,13 +33,13 @@ while (next_page_url != None):
     if get_tags_response.status_code != 200:
         raise SystemExit("An error has occured while trying to contact DockerHub API in order to retrieve tags!")
     
-    get_tags_response_data: dict = get_tags_response.json()
+    get_tags_response_data = get_tags_response.json()
 
     if ('results' not in get_tags_response_data):
         raise SystemExit("Invalid result obtained from DockerHub API while trying to retrieve tags!")
     
     for tag_key in get_tags_response_data['results']:
-        tag:dict = get_tags_response_data['results'][tag_key]
+        tag = get_tags_response_data['results'][tag_key]
 
         tag_name:str = tag['name']
         tag_last_pushed:str|None = tag['tag_last_pushed']
