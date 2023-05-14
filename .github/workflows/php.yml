@@ -64,7 +64,8 @@ jobs:
 
       - name: Perform PHPUnit tests
         run: |
-          docker run "${DOCKER_BUILD_TAG}" bash -c "composer run code:test -- --log-junit phpunit.report.xml | cat phpunit.report.xml" > phpunit.report.xml
+          touch phpunit.report.xml && chown 1000:1000 phpunit.report.xml
+          docker run -v "$(pwd)/phpunit.report.xml:/var/www/app/phpunit.report.xml" "${DOCKER_BUILD_TAG}" bash -c "composer run code:test -- --log-junit phpunit.report.xml"
           echo "::set-output name=file-path::$(pwd)/phpunit.report.xml"
 
       - uses: actions/upload-artifact@v3
