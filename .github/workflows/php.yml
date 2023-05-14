@@ -57,10 +57,10 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
+    container:
+      image: "${{ env.DOCKER_BUILD_TAG }}"
     steps:
       - name: Perform PHPUnit tests
-        container:
-          image: "${{ env.DOCKER_BUILD_TAG }}"
         run: |
           composer run code:test -- --log-junit phpunit.report.xml
           echo "::set-output name=file-path::$(pwd)/phpunit.report.xml"
