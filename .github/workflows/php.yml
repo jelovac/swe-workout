@@ -12,7 +12,9 @@ jobs:
     permissions:
       contents: read
     outputs:
+      DOCKER_BUILD_REPOSITORY: ${{ steps.assign_env_vars.outputs.DOCKER_BUILD_REPOSITORY }}
       DOCKER_BUILD_TAG: ${{ steps.assign_env_vars.outputs.DOCKER_BUILD_TAG }}
+      DOCKER_RELEASE_TAG: ${{ steps.assign_env_vars.outputs.DOCKER_RELEASE_TAG }}
     steps:
       - uses: actions/checkout@v3
 
@@ -21,8 +23,15 @@ jobs:
         run: |
           DOCKER_BUILD_REPOSITORY=jelovac/swe-workout-php
           echo "DOCKER_BUILD_REPOSITORY=${DOCKER_BUILD_REPOSITORY}" >> $GITHUB_ENV
-          echo "DOCKER_BUILD_TAG=${DOCKER_BUILD_REPOSITORY}:build_${BUILD_ID}" >> $GITHUB_ENV
-          echo "DOCKER_RELEASE_TAG=${DOCKER_BUILD_REPOSITORY}:latest" >> $GITHUB_ENV
+          echo "::set-output name=DOCKER_BUILD_REPOSITORY::$DOCKER_BUILD_REPOSITORY"
+
+          DOCKER_BUILD_TAG=${DOCKER_BUILD_REPOSITORY}:build_${BUILD_ID}
+          echo "DOCKER_BUILD_TAG=${DOCKER_BUILD_TAG}" >> $GITHUB_ENV
+          echo "::set-output name=DOCKER_BUILD_TAG::$DOCKER_BUILD_TAG"
+
+          DOCKER_RELEASE_TAG=${DOCKER_BUILD_REPOSITORY}:latest
+          echo "DOCKER_RELEASE_TAG=${DOCKER_RELEASE_TAG}" >> $GITHUB_ENV
+          echo "::set-output name=DOCKER_RELEASE_TAG::$DOCKER_RELEASE_TAG"
 
       - name: Build Docker Image
         run: |
