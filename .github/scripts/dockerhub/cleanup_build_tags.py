@@ -38,9 +38,7 @@ while (next_page_url != None):
     if ('results' not in get_tags_response_data):
         raise SystemExit("Invalid result obtained from DockerHub API while trying to retrieve tags!")
     
-    for tag_key in get_tags_response_data['results']:
-        tag = get_tags_response_data['results'][tag_key]
-
+    for tag in get_tags_response_data['results']:
         tag_name:str = tag['name']
         tag_last_pushed:str|None = tag['tag_last_pushed']
 
