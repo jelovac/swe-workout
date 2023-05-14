@@ -66,7 +66,7 @@ jobs:
         run: |
           touch phpunit.report.xml && chmod 777 phpunit.report.xml
           docker run -v "$(pwd)/phpunit.report.xml:/var/www/app/phpunit.report.xml" "${DOCKER_BUILD_TAG}" bash -c "composer run code:test -- --log-junit phpunit.report.xml"
-          echo "::set-output name=file-path::$(pwd)/phpunit.report.xml"
+          echo "file-path=$(pwd)/phpunit.report.xml" >> $GITHUB_OUTPUT
 
       - uses: actions/upload-artifact@v3
         with:
