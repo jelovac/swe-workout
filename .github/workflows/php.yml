@@ -16,9 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./.github/workflows/actions/set-build-id.yml
+      - uses: ./.github/actions/set-build-id
 
-      - uses: ./.github/workflows/actions/set-docker-build-vars.yml
+      - uses: ./.github/actions/set-docker-build-vars
 
       - name: Build Docker Image
         run: |
@@ -58,9 +58,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./.github/workflows/actions/set-build-id.yml
+      - uses: ./.github/actions/set-build-id
 
-      - uses: ./.github/workflows/actions/set-docker-build-vars.yml
+      - uses: ./.github/actions/set-docker-build-vars
 
       - name: Perform PHPUnit tests
         run: |
