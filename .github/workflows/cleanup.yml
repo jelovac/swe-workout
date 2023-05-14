@@ -16,4 +16,4 @@ jobs:
           DOCKER_HUB_ACCESS_TOKEN=$(
             bash .github/scripts/dockerhub/login.sh ${{ secrets.DOCKERHUB_USERNAME }} ${{ secrets.DOCKERHUB_TOKEN }}
           )
-          bash .github/scripts/dockerhub/cleanup_build_tags.sh jelovac swe-workout-php $DOCKER_HUB_ACCESS_TOKEN
+          python3 .github/scripts/dockerhub/cleanup_build_tags.py jelovac swe-workout-php $DOCKER_HUB_ACCESS_TOKEN
