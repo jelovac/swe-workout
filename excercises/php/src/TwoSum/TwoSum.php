@@ -23,13 +23,13 @@ final class TwoSum
      *
      * @throws \Exception
      */
-    public function solution(array $nums, int $target, TwoSumAlgorithmComplexity $algorithm): array
+    public function solution(array $nums, int $target, TwoSumAlgorithmComplexity $algorithmComplexity): array
     {
         if (count($nums) < 2) {
             throw new \InvalidArgumentException('At least two numbers need to be provided!');
         }
 
-        return match ($algorithm) {
+        return match ($algorithmComplexity) {
             TwoSumAlgorithmComplexity::simple => $this->simpleSolution($nums, $target),
             TwoSumAlgorithmComplexity::advanced => $this->advancedSolution($nums, $target),
         };
