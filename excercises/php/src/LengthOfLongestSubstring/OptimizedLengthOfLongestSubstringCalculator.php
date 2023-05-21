@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Jelovac\SweWorkout\LengthOfLongestSubstring;
 
-final class LengthOfLongestSubstringCalculator implements LengthOfLongestSubstringCalculatorInterface
+final class OptimizedLengthOfLongestSubstringCalculator implements LengthOfLongestSubstringCalculatorInterface
 {
     public function calculate(string $input): int
     {
@@ -14,13 +14,15 @@ final class LengthOfLongestSubstringCalculator implements LengthOfLongestSubstri
 
         for ($i = 0; $i < $charArrayCount; ++$i) {
             $substringCharArray = [$charArray[$i]];
+            $substringCharArrayUniqueValues = [$charArray[$i] => $charArray[$i]];
 
             for ($j = $i + 1; $j < $charArrayCount; ++$j) {
-                if (in_array($charArray[$j], $substringCharArray)) {
+                if ($substringCharArrayUniqueValues[$charArray[$j]]) {
                     break;
                 }
 
                 $substringCharArray[$j] = $charArray[$j];
+                $substringCharArrayUniqueValues[$charArray[$j]] = $charArray[$j];
             }
 
             $substringCharArrayCount = count($substringCharArray);

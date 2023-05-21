@@ -21,6 +21,18 @@ final class LengthOfLongestSubstringCalculatorTest extends TestCase
     }
 
     /**
+     * @dataProvider provideTestData
+     */
+    public function testOptimized(string $input, int $expectedResult): void
+    {
+        $calculator = new OptimizedLengthOfLongestSubstringCalculator();
+
+        $length = $calculator->calculate($input);
+
+        $this->assertEquals($expectedResult, $length);
+    }
+
+    /**
      * @return array<mixed>
      */
     public static function provideTestData(): array
@@ -45,6 +57,18 @@ final class LengthOfLongestSubstringCalculatorTest extends TestCase
             [
                 'input' => '',
                 'expectedResult' => 0,
+            ],
+            [
+                'input' => 'aab',
+                'expectedResult' => 2,
+            ],
+            [
+                'input' => 'abbcda',
+                'expectedResult' => 4,
+            ],
+            [
+                'input' => 'qwertyqwerty',
+                'expectedResult' => 6,
             ],
         ];
     }
