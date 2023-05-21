@@ -17,7 +17,7 @@ final class OptimizedLengthOfLongestSubstringCalculator implements LengthOfLonge
             $substringCharArrayUniqueValues = [$charArray[$i] => $charArray[$i]];
 
             for ($j = $i + 1; $j < $charArrayCount; ++$j) {
-                if ($substringCharArrayUniqueValues[$charArray[$j]]) {
+                if (isset($substringCharArrayUniqueValues[$charArray[$j]])) {
                     break;
                 }
 

@@ -5,7 +5,9 @@
   colors="true"
   bootstrap="vendor/autoload.php"
   failOnRisky="true"
+  displayDetailsOnTestsThatTriggerErrors="true"
   failOnWarning="true"
+  displayDetailsOnTestsThatTriggerWarnings="true"
 >
   <php>
     <ini name="error_reporting" value="-1"/>
