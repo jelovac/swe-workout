@@ -11,11 +11,11 @@ final class LengthOfLongestSubstringCalculatorTest extends TestCase
     /**
      * @dataProvider provideTestData
      */
-    public function test(string $input, int $expectedResult): void
+    public function testUsingBruteForceAlgorithm(string $input, int $expectedResult): void
     {
         $calculator = new LengthOfLongestSubstringCalculator();
 
-        $length = $calculator->calculate($input);
+        $length = $calculator->bruteForceAlgorithm($input);
 
         $this->assertEquals($expectedResult, $length);
     }
@@ -23,11 +23,23 @@ final class LengthOfLongestSubstringCalculatorTest extends TestCase
     /**
      * @dataProvider provideTestData
      */
-    public function testOptimized(string $input, int $expectedResult): void
+    public function testUsingOptimizedBruteForceAlgorithm(string $input, int $expectedResult): void
     {
-        $calculator = new OptimizedLengthOfLongestSubstringCalculator();
+        $calculator = new LengthOfLongestSubstringCalculator();
 
-        $length = $calculator->calculate($input);
+        $length = $calculator->bruteForceOptimizedAlgorithm($input);
+
+        $this->assertEquals($expectedResult, $length);
+    }
+
+    /**
+     * @dataProvider provideTestData
+     */
+    public function testUsingSlidingWindowAlgorithm(string $input, int $expectedResult): void
+    {
+        $calculator = new LengthOfLongestSubstringCalculator();
+
+        $length = $calculator->slidingWindowAlgorithm($input);
 
         $this->assertEquals($expectedResult, $length);
     }
