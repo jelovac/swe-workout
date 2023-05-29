@@ -72,20 +72,23 @@ final class LengthOfLongestSubstringCalculator
         for ($i = 0, $windowStartIndex = $i; $i < $charArrayCount; ++$i) {
             $char = $charArray[$i];
 
-            if (
+            $isRepeating =
                 isset($charToIndexMap[$char])
                 && ($charToIndexMap[$char] + 1) > $windowStartIndex
-            ) {
-                $windowStartIndex = $charToIndexMap[$char] + 1;
+            ;
+
+            if ($isRepeating) {
+                $newWindowStartIndex = $charToIndexMap[$char] + 1;
+                $windowStartIndex = $newWindowStartIndex;
+            } else {
+                $currentWindowLength = $i - $windowStartIndex + 1;
+
+                if ($currentWindowLength > $longestSubstringLength) {
+                    $longestSubstringLength = $currentWindowLength;
+                }
             }
 
             $charToIndexMap[$char] = $i;
-
-            $currentWindowLength = $i - $windowStartIndex + 1;
-
-            if ($currentWindowLength > $longestSubstringLength) {
-                $longestSubstringLength = $currentWindowLength;
-            }
         }
 
         return $longestSubstringLength;
