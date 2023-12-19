@@ -3,10 +3,10 @@ name: PHP Workflow
 on:
   push:
     paths:
-      - 'exercises/php'
+      - 'exercises/php/**'
   pull_request:
     paths:
-      - 'exercises/php'
+      - 'exercises/php/**'
 
 jobs:
   build:
