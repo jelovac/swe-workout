@@ -23,3 +23,9 @@ jobs:
         with:
           arguments: build
           build-root-directory: ./workouts/java
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: build-reports
+          path: build/reports/
