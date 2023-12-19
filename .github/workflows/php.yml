@@ -2,7 +2,11 @@ name: PHP Workflow
 
 on:
   push:
+    paths:
+      - 'exercises/php'
   pull_request:
+    paths:
+      - 'exercises/php'
 
 jobs:
   build:
