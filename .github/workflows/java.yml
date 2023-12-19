@@ -1,0 +1,25 @@
+name: Java Workflow
+
+on:
+  push:
+    paths:
+      - 'exercises/java/**'
+  pull_request:
+    paths:
+      - 'exercises/java/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+          build-root-directory: ./excercises/java
