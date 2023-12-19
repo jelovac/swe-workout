@@ -3,10 +3,10 @@ name: PHP Workflow
 on:
   push:
     paths:
-      - 'exercises/php/**'
+      - 'workouts/php/**'
   pull_request:
     paths:
-      - 'exercises/php/**'
+      - 'workouts/php/**'
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
             --target package \
             --tag $DOCKER_BUILD_TAG \
             --label "build_id=${BUILD_ID}" \
-            excercises/php
+            workouts/php
 
       - name: Log in to registry
         uses: docker/login-action@v2

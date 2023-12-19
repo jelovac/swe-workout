@@ -3,10 +3,10 @@ name: Java Workflow
 on:
   push:
     paths:
-      - 'exercises/java/**'
+      - 'workouts/java/**'
   pull_request:
     paths:
-      - 'exercises/java/**'
+      - 'workouts/java/**'
 
 jobs:
   build:
@@ -22,4 +22,4 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: build
-          build-root-directory: ./excercises/java
+          build-root-directory: ./workouts/java
