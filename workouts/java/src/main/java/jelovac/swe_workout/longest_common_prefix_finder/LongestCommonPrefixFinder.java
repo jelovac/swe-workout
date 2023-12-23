@@ -2,6 +2,10 @@ package jelovac.swe_workout.longest_common_prefix_finder;
 
 public class LongestCommonPrefixFinder {
   public String findUsingAlgorithmAlfa(String[] words) {
+    if (words.length == 1) {
+      return words[0];
+    }
+
     String shortestWord = this.getShortestWordFromArrayOUnsortedWords(words);
 
     StringBuilder matched = new StringBuilder();
