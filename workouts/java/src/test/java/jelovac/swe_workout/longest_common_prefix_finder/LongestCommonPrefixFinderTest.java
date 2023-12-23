@@ -24,11 +24,7 @@ public class LongestCommonPrefixFinderTest {
         Arguments.of(new String[] {"fintech", "finish", "finland"}, "fin"),
         Arguments.of(new String[] {"alexa", "alexey", "albert"}, "al"),
         Arguments.of(new String[] {"abc", "a", "b"}, ""),
-        Arguments.of(
-            new String[] {
-              "a",
-            },
-            "a"),
+        Arguments.of(new String[] {"a"}, "a"),
         Arguments.of(new String[] {"apple", "apricot", "antarctic"}, "a"));
   }
 }
