@@ -2,25 +2,12 @@ package jelovac.swe_workout.longest_common_prefix_finder;
 
 public class LongestCommonPrefixFinder {
   public String findUsingAlgorithmAlfa(String[] words) {
-    if (words.length == 0) {
-      throw new RuntimeException("Provided empty String[]!");
-    }
-
-    Integer shortestWordLength = null;
-
-    // First we find the shortest word
-    for (String word : words) {
-      int currentWordLength = word.length();
-
-      if (shortestWordLength == null || currentWordLength < shortestWordLength) {
-        shortestWordLength = currentWordLength;
-      }
-    }
+    String shortestWord = this.getShortestWordFromArrayOUnsortedWords(words);
 
     StringBuilder matched = new StringBuilder();
 
     outerLoop:
-    for (int i = 0; i < shortestWordLength; i++) {
+    for (int i = 0; i < shortestWord.length(); i++) {
 
       Character currentLetterMatch = null;
 
@@ -44,5 +31,21 @@ public class LongestCommonPrefixFinder {
     }
 
     return matched.toString();
+  }
+
+  private String getShortestWordFromArrayOUnsortedWords(String[] words) throws RuntimeException {
+    if (words.length == 0) {
+      throw new RuntimeException("Provided empty String[]!");
+    }
+
+    String shortestWord = null;
+
+    for (String word : words) {
+      if (shortestWord == null || word.length() < shortestWord.length()) {
+        shortestWord = word;
+      }
+    }
+
+    return shortestWord;
   }
 }
