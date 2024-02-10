@@ -3,7 +3,6 @@ package jelovac.swe_workout.anagram_checker;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.stream.Stream;
-import jelovac.swe_workout.anagram_checker.AnagramChecker;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
