@@ -51,12 +51,12 @@ final class Solution
             $executedMoveDirectionUsageCount[$currentMove] = true;
         }
 
-        $firstMoveCoordinate = $executedMovesStack->bottom();
-        $lastMoveCoordinate = $executedMovesStack->top();
+        $startCoordinates = $executedMovesStack->bottom();
+        $endCoordinates = $executedMovesStack->top();
 
         if (
-            $firstMoveCoordinate[0] === $lastMoveCoordinate[0]
-            && $firstMoveCoordinate[1] === $lastMoveCoordinate[1]
+            $startCoordinates[0] === $endCoordinates[0]
+            && $startCoordinates[1] === $endCoordinates[1]
         ) {
             return true;
         }
