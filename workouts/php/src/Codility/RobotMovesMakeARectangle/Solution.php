@@ -42,13 +42,13 @@ final class Solution
             if (
                 $previousMoveCoordinates[2] !== $currentMove
                 && $executedMoveDirectionUsageCount[$currentMove] > 0
-                && $executedMoveDirectionUsageCount[$currentMove] !== $executedMoveDirectionUsageCount[$oppositeMoveMap[$currentMove]]
+                && ($executedMoveDirectionUsageCount[$currentMove] + 1) !== $executedMoveDirectionUsageCount[$oppositeMoveMap[$currentMove]]
             ) {
                 return false;
             }
 
             $executedMovesStack->push($currentMoveCoordinates);
-            $executedMoveDirectionUsageCount[$currentMove] = true;
+            ++$executedMoveDirectionUsageCount[$currentMove];
         }
 
         $startCoordinates = $executedMovesStack->bottom();
