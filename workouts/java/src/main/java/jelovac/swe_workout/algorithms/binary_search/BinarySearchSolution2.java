@@ -1,11 +1,11 @@
 package jelovac.swe_workout.algorithms.binary_search;
 
 public class BinarySearchSolution2 {
-  int search(int targetValue, int[] sortedArray) {
+  public int search(int targetValue, int[] sortedArray) {
     return this.recursiveBinarySearch(targetValue, sortedArray, 0, sortedArray.length - 1);
   }
 
-  int recursiveBinarySearch(
+  private int recursiveBinarySearch(
       int targetValue, int[] sortedArray, int searchWindowStartIndex, int searchWindowEndIndex) {
     if (sortedArray.length == 0) {
       return -1;
