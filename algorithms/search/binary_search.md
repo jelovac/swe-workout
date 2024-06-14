@@ -6,7 +6,7 @@ It only works on sorted arrays, and its efficiency comes from reducing the searc
 
 It has time complexity: O(log n) which makes it very efficient for searching large datasets.
 
-## High-level explanation:
+## High-level explanation
 
 1. Start the search from the middle of a sorted array
 
