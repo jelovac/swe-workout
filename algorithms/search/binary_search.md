@@ -46,3 +46,5 @@ It has time complexity: O(log n) which makes it very efficient for searching lar
 ## Examples
 
 - [Java](/workouts/java/src/main/java/jelovac/swe_workout/algorithms/search/binary_search)
+
+- [PHP](/workouts/php/src/Algorithms/Search/BinarySearch)
