@@ -45,4 +45,4 @@ It has time complexity: O(log n) which makes it very efficient for searching lar
 
 ## Examples
 
-- [Java](workouts/java/src/main/algorithms/binary_search)
+- [Java](../../workouts/java/src/main/algorithms/binary_search)
