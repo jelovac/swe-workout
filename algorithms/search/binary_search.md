@@ -6,7 +6,7 @@ It only works on sorted arrays, and its efficiency comes from reducing the searc
 
 It has time complexity: O(log n) which makes it very efficient for searching large datasets.
 
-High-level explanation:
+## High-level explanation:
 
 1. Start the search from the middle of a sorted array
 
@@ -42,3 +42,7 @@ High-level explanation:
       repeat the search on that half;
 
 3. Repeat the search process until you find the target element or there are no more elements in the array. If the target value does not exist in the array a good practice is to return an index of value of -1.
+
+## Examples
+
+- [Java](workouts/java/src/main/algorithms/binary_search)
