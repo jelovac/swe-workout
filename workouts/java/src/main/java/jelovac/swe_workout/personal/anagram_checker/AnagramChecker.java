@@ -1,4 +1,4 @@
-package jelovac.swe_workout.anagram_checker;
+package jelovac.swe_workout.personal.anagram_checker;
 
 import static java.util.Arrays.sort;
 

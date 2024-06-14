@@ -1,4 +1,4 @@
-package jelovac.swe_workout.palindrome_number_checker;
+package jelovac.swe_workout.personal.palindrome_number_checker;
 
 import java.util.ArrayList;
 

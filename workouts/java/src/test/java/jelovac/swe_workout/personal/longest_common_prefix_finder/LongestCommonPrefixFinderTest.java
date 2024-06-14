@@ -1,4 +1,4 @@
-package jelovac.swe_workout.longest_common_prefix_finder;
+package jelovac.swe_workout.personal.longest_common_prefix_finder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

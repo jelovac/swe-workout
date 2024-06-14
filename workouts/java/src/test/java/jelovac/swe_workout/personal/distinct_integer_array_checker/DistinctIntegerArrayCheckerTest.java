@@ -1,4 +1,4 @@
-package jelovac.swe_workout.distinct_integer_array_checker;
+package jelovac.swe_workout.personal.distinct_integer_array_checker;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
