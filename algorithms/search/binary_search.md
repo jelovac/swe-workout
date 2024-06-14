@@ -8,22 +8,24 @@ It has time complexity: O(log n) which makes it very eficient for searching larg
 
 High-level explanation:
 
-1. Start your search from the Middle
+1. Start the search from the middle of a sorted array
 
-    Split an array in half. Make the last element of the first half (also called left half) your probing value.
+   Find the middle element in the array.
 
-2. Compare the target value with the probing value:
+   If array has even number of elements, in other words there is no middle element, then chose either one of the two
+   elements in the middle.
 
-    If they are equal -> you've found your element's position.
+   Let's name this element probing element (probe).
 
-    if the probing value is less then the target value -> the element is located in the second half (also called right half) of the array.
+2. Compare the search target value with the probing element
 
-    If the probing value is greater then the target value -> the element is located in the first half of the array.
+   `target == probe`: target element has been found, return it's index position.
 
-3. Repeat the process
+   `target < probe`: target element is less then probe, search can be concentrated on the first half of the array.
 
-    Repeat the process with the appropriate half of the array (either first or second depending on the previous step). Treat this subset of the array as if it was the whole array and go back to step 1.
+   `target > probe`: target element is greater than the probe, search can be concentrated on the second half of the
+   array.
 
-4. End
+3. Repeat the split process until you find the target element or there are no more elements in the array.
 
-     If the array has no elements (i.e., when the high index is less than the low index), then the target is not in the array, and the search ends.
+   If the target value does not exist in the array a good practice is to return an index of value of -1.
