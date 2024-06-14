@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jelovac\SweWorkout\BinarySearch;
+namespace Jelovac\SweWorkout\Algorithms\Search\BinarySearch;
 
 final class BinarySearch
 {

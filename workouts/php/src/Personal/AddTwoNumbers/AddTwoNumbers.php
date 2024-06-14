@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jelovac\SweWorkout\AddTwoNumbers;
+namespace Jelovac\SweWorkout\Personal\AddTwoNumbers;
 
 final class AddTwoNumbers
 {

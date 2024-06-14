@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jelovac\SweWorkout\TwoSum;
+namespace Jelovac\SweWorkout\Personal\TwoSum;
 
 final class TwoSum
 {

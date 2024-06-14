@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jelovac\SweWorkout\LengthOfLongestSubstring;
+namespace Jelovac\SweWorkout\Personal\LengthOfLongestSubstring;
 
 use PHPUnit\Framework\TestCase;
 

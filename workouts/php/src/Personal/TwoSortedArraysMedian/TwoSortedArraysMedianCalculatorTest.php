@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jelovac\SweWorkout\TwoSortedArraysMedian;
+namespace Jelovac\SweWorkout\Personal\TwoSortedArraysMedian;
 
 use PHPUnit\Framework\TestCase;
 

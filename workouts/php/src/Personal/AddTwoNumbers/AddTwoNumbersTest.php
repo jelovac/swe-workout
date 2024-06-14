@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jelovac\SweWorkout\AddTwoNumbers;
+namespace Jelovac\SweWorkout\Personal\AddTwoNumbers;
 
 use PHPUnit\Framework\TestCase;
 
