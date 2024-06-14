@@ -41,6 +41,4 @@ High-level explanation:
 
       repeat the search on that half;
 
-3. Repeat the split process until you find the target element or there are no more elements in the array.
-
-   If the target value does not exist in the array a good practice is to return an index of value of -1.
+3. Repeat the search process until you find the target element or there are no more elements in the array. If the target value does not exist in the array a good practice is to return an index of value of -1.
