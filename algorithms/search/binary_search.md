@@ -19,13 +19,27 @@ High-level explanation:
 
 2. Compare the search target value with the probing element
 
-   `target == probe`: target element has been found; return its index position;
+   1. `target == probe`:
 
-   `target < probe`: target element is less than probe; search can be concentrated on the first half of the array;
-   repeat the search on that half;
+      target element has been found;
 
-   `target > probe`: target element is greater than the probe; search can be concentrated on the second half of the
-   array; repeat the search on that half;
+      return its index position;
+
+   2. `target < probe`:
+
+      target element is less than probe;
+
+      search can be concentrated on the first half of the array;
+
+      repeat the search on that half;
+
+   3. `target > probe`:
+
+      target element is greater than the probe;
+
+      search can be concentrated on the second half of the array;
+
+      repeat the search on that half;
 
 3. Repeat the split process until you find the target element or there are no more elements in the array.
 
