@@ -1,4 +1,4 @@
-package jelovac.swe_workout.algorithms.binary_search;
+package jelovac.swe_workout.algorithms.search.binary_search;
 
 public class BinarySearchSolution1 {
   int search(int targetValue, int[] sortedArray) {
